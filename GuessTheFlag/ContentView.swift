@@ -1,9 +1,18 @@
-//  ContentView.swift
-// LIBRARIES :
+// MARK: ContentView.swift
+
+ 
+
+ // ///////////////
+// MARK: LIBRARIES
 
 import SwiftUI
 
 
+ 
+ 
+
+ // /////////////////////////////
+//  MARK: struct ContentView { }
 
 struct ContentView: View {
     
@@ -32,13 +41,17 @@ struct ContentView: View {
     var body: some View {
         
         ZStack {
-            Color
-                .blue
+            LinearGradient(gradient : Gradient(colors : [.blue , .white]) ,
+                           startPoint : .top ,
+                           endPoint : .bottom)
                 .edgesIgnoringSafeArea(.all)
             VStack(spacing : 30) {
                 VStack {
                     Text("Guess the Flag of")
+                        .fontWeight(.medium)
                     Text("\(countries[correctAnswer])")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
                 }
                 .foregroundColor(Color.white)
                 
@@ -49,6 +62,14 @@ struct ContentView: View {
                     }) {
                         Image(self.countries[flagIndex])
                             .renderingMode(.original) // The renderingMode(.original) modifier tells SwiftUI to render the original image pixels , rather than trying to recolor them as a button .
+                            .clipShape(RoundedRectangle(cornerRadius : 15))
+                            .overlay(
+                                RoundedRectangle(cornerRadius : 15.0)
+                                    .stroke(Color.white ,
+                                            lineWidth : 3))
+                            .shadow(color: Color(white : 1.00 ,
+                                                 opacity : 0.65) ,
+                                    radius : 10)
                     }
                     .alert(isPresented: $isShowingScoreAlert) {
                         Alert(title : Text("\(scoreTitle)") ,
@@ -63,6 +84,11 @@ struct ContentView: View {
             }
         }
     }
+    
+
+    
+    // //////////////
+   //  MARK: METHODS
     
     
     
@@ -102,6 +128,9 @@ struct ContentView: View {
 
 
 
+
+ // ///////////////
+//  MARK: PREVIEWS
 
 struct ContentView_Previews: PreviewProvider {
     
