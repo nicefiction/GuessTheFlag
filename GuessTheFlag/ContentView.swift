@@ -19,7 +19,7 @@ struct ContentView: View {
      // ////////////////////////
     //  MARK: PROPERTY WRAPPERS
     
-    @State private var score: Int = 0
+    @State private var gameScore: Int = 0
     @State private var isShowingScoreAlert: Bool = false
     @State private var scoreTitle: String = ""
     @State private var scoreMessage: String = ""
@@ -73,13 +73,24 @@ struct ContentView: View {
                     }
                     .alert(isPresented: $isShowingScoreAlert) {
                         Alert(title : Text("\(scoreTitle)") ,
-                              message : Text("\(scoreMessage) Your game score is now \(score) .") ,
+                              message : Text("\(scoreMessage)") ,
                               dismissButton : .default(Text("Continue")) {
                                 
                                 self.askQuestion()
                               })
                     }
                 }
+                
+                Spacer()
+                
+                VStack {
+                    Text("Your Score")
+                    Text("\(gameScore)")
+                        .font(.title)
+                        .bold()
+                }
+                .foregroundColor(.blue)
+                
                 Spacer()
             }
         }
@@ -107,14 +118,14 @@ struct ContentView: View {
     func updateGameScoreUsing(index: Int) {
         
         let gameRoundScore = index == correctAnswer ? 1 : -1
-        score += gameRoundScore
+        gameScore += gameRoundScore
     }
     
     
     func updateAlertUsing(index: Int) {
         
         scoreTitle = index == correctAnswer ? "🙌" : "👎"
-        scoreMessage = index == correctAnswer ? "+ 1\n" : "- 1\n"
+        scoreMessage = index == correctAnswer ? "+ 1\nThat is indeed the flag of \(countries[correctAnswer]) ." : "- 1\nThat is the flag of \(countries[index]) ."
     }
     
     
