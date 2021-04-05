@@ -60,16 +60,8 @@ struct ContentView: View {
                         print("Flag \(countries[flagIndex]) was tapped .")
                         self.tapFlagWith(index : flagIndex)
                     }) {
-                        Image(self.countries[flagIndex])
-                            .renderingMode(.original) // The renderingMode(.original) modifier tells SwiftUI to render the original image pixels , rather than trying to recolor them as a button .
-                            .clipShape(RoundedRectangle(cornerRadius : 15))
-                            .overlay(
-                                RoundedRectangle(cornerRadius : 15.0)
-                                    .stroke(Color.white ,
-                                            lineWidth : 3))
-                            .shadow(color: Color(white : 1.00 ,
-                                                 opacity : 0.65) ,
-                                    radius : 10)
+                        FlagImage(flagIndex : flagIndex ,
+                                  countries : countries)
                     }
                     .alert(isPresented: $isShowingScoreAlert) {
                         Alert(title : Text("\(scoreTitle)") ,
