@@ -1,10 +1,10 @@
-// MARK: ContentView.swift
+// MARK: AnimatedContentView.swift
 
 import SwiftUI
 
 
  
-struct ContentView: View {
+struct AnimatedContentView: View {
     
      // ////////////////////////
     //  MARK: PROPERTY WRAPPERS
@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var countries: [String] = [
         "Estonia" , "France" , "Germany" , "Ireland" , "Italy" , "Monaco" , "Nigeria" , "Poland" , "Russia" , "Spain" , "UK" , "US"
     ].shuffled()
+    @State private var flagIsTapped: Bool = false
 
     
     
@@ -45,10 +46,37 @@ struct ContentView: View {
                     Button(action : {
                         print("Flag \(countries[flagIndex]) was tapped .")
                         self.tapFlagWith(index : flagIndex)
+                        flagIsTapped.toggle()
                     }) {
-                        FlagImage(flagIndex : flagIndex ,
-                                  countries : countries)
-                            .padding()
+                        if flagIsTapped {
+                            
+                            Image(self.countries[flagIndex])
+                                .renderingMode(.original)
+                                .opacity(flagIndex == correctAnswer ? 1 : 0.25)
+                                .clipShape(RoundedRectangle(cornerRadius : 15))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius : 15.0)
+                                        .stroke(Color.white ,
+                                                lineWidth : 3))
+                                .shadow(color : Color(white : 1.00 ,
+                                                      opacity : 0.65) ,
+                                        radius : 10)
+                                .padding()
+                                .animation(.default)
+                        } else {
+                            
+                            Image(self.countries[flagIndex])
+                                .renderingMode(.original)
+                                .clipShape(RoundedRectangle(cornerRadius : 15))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius : 15.0)
+                                        .stroke(Color.white ,
+                                                lineWidth : 3))
+                                .shadow(color : Color(white : 1.00 ,
+                                                      opacity : 0.65) ,
+                                        radius : 10)
+                                .padding()
+                        }
                     }
                     .alert(isPresented: $isShowingScoreAlert) {
                         Alert(title : Text("\(scoreTitle)") ,
@@ -98,12 +126,13 @@ struct ContentView: View {
     func updateAlertUsing(index: Int) {
         
         scoreTitle = index == correctAnswer ? "🙌" : "👎"
-        scoreMessage = index == correctAnswer ? "+ 1\nThat is indeed the flag of \(countries[correctAnswer]) ." : "- 1\nThat is the flag of \(countries[index]) ."
+        scoreMessage = index == correctAnswer ? "+ 1\nThat is indeed the flag of \(countries[correctAnswer]) ." : "- 1\nThat was the flag of \(countries[index]) ."
     }
     
     
     func askQuestion() {
         
+        flagIsTapped = false
         countries.shuffle()
         correctAnswer = Int.random(in : 0...2)
     }
@@ -116,10 +145,11 @@ struct ContentView: View {
  // ///////////////
 //  MARK: PREVIEWS
 
-struct ContentView_Previews: PreviewProvider {
+struct AnimatedContentView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        ContentView().previewDevice("iPhone 12 Pro")
+        AnimatedContentView().previewDevice("iPhone 12 Pro")
     }
 }
+

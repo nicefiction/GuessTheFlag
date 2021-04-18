@@ -16,8 +16,8 @@ struct FlagStyle: ViewModifier {
                 RoundedRectangle(cornerRadius : 15.0)
                     .stroke(Color.white ,
                             lineWidth : 3))
-            .shadow(color: Color(white : 1.00 ,
-                                 opacity : 0.65) ,
+            .shadow(color : Color(white : 1.00 ,
+                                  opacity : 0.65) ,
                     radius : 10)
     }
 }
