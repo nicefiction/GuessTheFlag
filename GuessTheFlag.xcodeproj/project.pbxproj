@@ -14,6 +14,7 @@
 		09DC580126184B4900353BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09DC580026184B4900353BE6 /* Assets.xcassets */; };
 		09DC580426184B4900353BE6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09DC580326184B4900353BE6 /* Preview Assets.xcassets */; };
 		09F6B54B262C1B5F001EA1BD /* AnimatedContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F6B54A262C1B5E001EA1BD /* AnimatedContentView.swift */; };
+		09F6B54F262C296C001EA1BD /* AnimatedContentViewRefactored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F6B54E262C296B001EA1BD /* AnimatedContentViewRefactored.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		09DC580326184B4900353BE6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		09DC580526184B4900353BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09F6B54A262C1B5E001EA1BD /* AnimatedContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedContentView.swift; sourceTree = "<group>"; };
+		09F6B54E262C296B001EA1BD /* AnimatedContentViewRefactored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedContentViewRefactored.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				09DC57FC26184B4800353BE6 /* GuessTheFlagApp.swift */,
 				09DC57FE26184B4800353BE6 /* ContentView.swift */,
 				09F6B54A262C1B5E001EA1BD /* AnimatedContentView.swift */,
+				09F6B54E262C296B001EA1BD /* AnimatedContentViewRefactored.swift */,
 				09D615E8261B6B1E005F9581 /* FlagImage.swift */,
 				09D615EC261B6DBB005F9581 /* FlagStyle.swift */,
 				09DC580026184B4900353BE6 /* Assets.xcassets */,
@@ -151,6 +154,7 @@
 				09D615ED261B6DBB005F9581 /* FlagStyle.swift in Sources */,
 				09F6B54B262C1B5F001EA1BD /* AnimatedContentView.swift in Sources */,
 				09D615E9261B6B1E005F9581 /* FlagImage.swift in Sources */,
+				09F6B54F262C296C001EA1BD /* AnimatedContentViewRefactored.swift in Sources */,
 				09DC57FD26184B4800353BE6 /* GuessTheFlagApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,10 +1,10 @@
-// MARK: AnimatedContentView.swift
+// MARK: AnimatedContentViewRefactored.swift
 
 import SwiftUI
 
 
  
-struct AnimatedContentView: View {
+struct AnimatedContentViewRefactored: View {
     
      // ////////////////////////
     //  MARK: PROPERTY WRAPPERS
@@ -57,51 +57,24 @@ struct AnimatedContentView: View {
                         }
                     }) {
                         if flagIsTapped && (flagIndex == correctAnswer) {
-                            Image(self.countries[flagIndex])
-                                .renderingMode(.original)
-                                .animation(.default)
-                                .clipShape(RoundedRectangle(cornerRadius : 15))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius : 15.0)
-                                        .stroke(Color.white ,
-                                                lineWidth : 3))
-                                .shadow(color : Color(white : 1.00 ,
-                                                      opacity : 0.65) ,
-                                        radius : 10)
-                                .padding()
+                            FlagImage(flagIndex : flagIndex ,
+                                      countries : countries)
                                 .rotation3DEffect(
                                     .degrees(Double(animationAmount)) ,
                                     axis : (x : 0.0 , y : 1.0 , z : 0.0)
                                 )
                             
                         } else if flagIsTapped && (flagIndex != correctAnswer) {
-                            Image(self.countries[flagIndex])
-                                .renderingMode(.original)
+                            FlagImage(flagIndex : flagIndex ,
+                                      countries : countries)
                                 .opacity(0.25)
-                                .clipShape(RoundedRectangle(cornerRadius : 15))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius : 15.0)
-                                        .stroke(Color.white ,
-                                                lineWidth : 3))
-                                .shadow(color : Color(white : 1.00 ,
-                                                      opacity : 0.65) ,
-                                        radius : 10)
-                                .padding()
                             
                         } else {
-                            Image(self.countries[flagIndex])
-                                .renderingMode(.original)
-                                .clipShape(RoundedRectangle(cornerRadius : 15))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius : 15.0)
-                                        .stroke(Color.white ,
-                                                lineWidth : 3))
-                                .shadow(color : Color(white : 1.00 ,
-                                                      opacity : 0.65) ,
-                                        radius : 10)
-                                .padding()
+                            FlagImage(flagIndex : flagIndex ,
+                                      countries : countries)
                         }
                     }
+                    .padding()
                     .alert(isPresented: $isShowingScoreAlert) {
                         Alert(title : Text("\(scoreTitle)") ,
                               message : Text("\(scoreMessage)") ,
@@ -170,11 +143,11 @@ struct AnimatedContentView: View {
  // ///////////////
 //  MARK: PREVIEWS
 
-struct AnimatedContentView_Previews: PreviewProvider {
+struct AnimatedContentViewRefactored_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        AnimatedContentView().previewDevice("iPhone 12 Pro")
+        AnimatedContentViewRefactored().previewDevice("iPhone 12 Pro")
     }
 }
 
