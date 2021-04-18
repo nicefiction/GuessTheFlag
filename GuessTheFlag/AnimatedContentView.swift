@@ -18,6 +18,7 @@ struct AnimatedContentView: View {
         "Estonia" , "France" , "Germany" , "Ireland" , "Italy" , "Monaco" , "Nigeria" , "Poland" , "Russia" , "Spain" , "UK" , "US"
     ].shuffled()
     @State private var flagIsTapped: Bool = false
+    @State private var animationAmount: CGFloat = 0.0
 
     
     
@@ -47,12 +48,19 @@ struct AnimatedContentView: View {
                         print("Flag \(countries[flagIndex]) was tapped .")
                         self.tapFlagWith(index : flagIndex)
                         flagIsTapped.toggle()
+                        
+                        withAnimation(
+                            Animation
+                                .interpolatingSpring(stiffness : 5.00 ,
+                                                     damping : 1.00)) {
+                            animationAmount = (flagIndex == correctAnswer) ? 360.0 : 0.0
+                        }
                     }) {
-                        if flagIsTapped {
+                        if flagIsTapped && (flagIndex == correctAnswer) {
                             
                             Image(self.countries[flagIndex])
                                 .renderingMode(.original)
-                                .opacity(flagIndex == correctAnswer ? 1 : 0.25)
+                                .animation(.default)
                                 .clipShape(RoundedRectangle(cornerRadius : 15))
                                 .overlay(
                                     RoundedRectangle(cornerRadius : 15.0)
@@ -62,7 +70,24 @@ struct AnimatedContentView: View {
                                                       opacity : 0.65) ,
                                         radius : 10)
                                 .padding()
-                                .animation(.default)
+                                .rotation3DEffect(
+                                    .degrees(Double(animationAmount)) ,
+                                    axis : (x : 0.0 , y : 1.0 , z : 0.0)
+                                )
+                        } else if flagIsTapped && (flagIndex != correctAnswer) {
+                            
+                            Image(self.countries[flagIndex])
+                                .renderingMode(.original)
+                                .opacity(0.25)
+                                .clipShape(RoundedRectangle(cornerRadius : 15))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius : 15.0)
+                                        .stroke(Color.white ,
+                                                lineWidth : 3))
+                                .shadow(color : Color(white : 1.00 ,
+                                                      opacity : 0.65) ,
+                                        radius : 10)
+                                .padding()
                         } else {
                             
                             Image(self.countries[flagIndex])
@@ -133,6 +158,7 @@ struct AnimatedContentView: View {
     func askQuestion() {
         
         flagIsTapped = false
+        animationAmount = 0.0
         countries.shuffle()
         correctAnswer = Int.random(in : 0...2)
     }
