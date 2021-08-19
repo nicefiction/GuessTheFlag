@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09C2DDC226CE391F002CBE89 /* AccessibleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C2DDC126CE391F002CBE89 /* AccessibleContentView.swift */; };
 		09D615E9261B6B1E005F9581 /* FlagImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D615E8261B6B1E005F9581 /* FlagImage.swift */; };
 		09D615ED261B6DBB005F9581 /* FlagStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D615EC261B6DBB005F9581 /* FlagStyle.swift */; };
 		09DC57FD26184B4800353BE6 /* GuessTheFlagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC57FC26184B4800353BE6 /* GuessTheFlagApp.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09C2DDC126CE391F002CBE89 /* AccessibleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibleContentView.swift; sourceTree = "<group>"; };
 		09D615E8261B6B1E005F9581 /* FlagImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagImage.swift; sourceTree = "<group>"; };
 		09D615EC261B6DBB005F9581 /* FlagStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagStyle.swift; sourceTree = "<group>"; };
 		09DC57F926184B4800353BE6 /* GuessTheFlag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessTheFlag.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 				09DC57FE26184B4800353BE6 /* ContentView.swift */,
 				09F6B54A262C1B5E001EA1BD /* AnimatedContentView.swift */,
 				09F6B54E262C296B001EA1BD /* AnimatedContentViewRefactored.swift */,
+				09C2DDC126CE391F002CBE89 /* AccessibleContentView.swift */,
 				09D615E8261B6B1E005F9581 /* FlagImage.swift */,
 				09D615EC261B6DBB005F9581 /* FlagStyle.swift */,
 				09DC580026184B4900353BE6 /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 			files = (
 				09DC57FF26184B4800353BE6 /* ContentView.swift in Sources */,
 				09D615ED261B6DBB005F9581 /* FlagStyle.swift in Sources */,
+				09C2DDC226CE391F002CBE89 /* AccessibleContentView.swift in Sources */,
 				09F6B54B262C1B5F001EA1BD /* AnimatedContentView.swift in Sources */,
 				09D615E9261B6B1E005F9581 /* FlagImage.swift in Sources */,
 				09F6B54F262C296C001EA1BD /* AnimatedContentViewRefactored.swift in Sources */,
